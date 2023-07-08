@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin">Requests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/clients">Clients</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/agencies">Agencies</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive table-responsive-sm">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Request Type</th>
+                <th>More Info</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let request of requests">
+                <td>{{request.type}}</td>
+                <td>
+                  <a class="forgot-password-link" routerLink="/admin/request" (click)="viewRequest(request)">More Info</a>
+                </td>
+                <td>
+                  <button class="btn btn-primary" (click)="accept(request)">Accept</button>
+                </td>
+                <td>
+                  <button class="btn btn-primary" (click)="reject(request)">Reject</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

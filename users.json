@@ -1,0 +1,11 @@
+[{
+    "username": "zika",
+    "password": "zika123",
+    "phoneNumber": "+381666666",
+    "email": "zika@pmf.etf.rs",
+    "type": "client",
+    "other": {
+    	"name": "Zivojin",
+    	"lastName": "Sustran"
+    }
+}]

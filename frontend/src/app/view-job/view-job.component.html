@@ -1,0 +1,151 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="agency != null">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/agency">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/worker">Workers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="client != null">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/client">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/objects">Objects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Agencies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Agency:</th>
+              <td>{{jobAgency.other.name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Client:</th>
+              <td>{{jobClient.other.name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Object address:</th>
+              <td>{{object.objectAddress}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Job status:</th>
+              <td>{{job.status}}</td>
+            </tr>
+            <tr *ngIf="job.price != null">
+              <th scope="row">Job price:</th>
+              <td>{{job.price}}</td>
+            </tr>
+            <tr *ngIf="job.price == null"> 
+              <th scope="row">Job price:</th>
+              <td>Not set</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h2>Object Layout</h2>
+    <div class="canvas-container">
+      <canvas #myCanvas class="canvas"   height="400px" width = "748px"></canvas>
+    </div>
+    <!-- client specific stuff? -->
+    <div *ngIf="client != null && (job.status == 'request' || job.status == 'accepted'
+     || job.status == 'active' || job.status == 'ready')">
+      <input type="text" class="form-control" placeholder="Cancellation reason" [(ngModel)]="cancellationReason">
+      <button type="button" class="btn btn-primary" (click)="cancel()">Cancel Job</button>
+    </div>
+    <div *ngIf="client != null && job.status =='accepted'">
+      <!-- if agency accepted the request, i review the price after which the job becomes, ready -->
+      <!-- once the job is ready, the agency can assign workers and the job becomes active -->
+      <button type="button" class="btn btn-primary" (click)="start()">Start job</button>
+    </div>
+    <!-- agency specific stuff, like a handshake -->
+    <div *ngIf="agency != null && job.status == 'request'">
+      <input type="number" class="form-control" name="price" id="price" placeholder="Enter price" [(ngModel)]="price">
+      <button type="button" class="btn btn-primary" (click)="accept()">Accept Job</button>
+      <button type="button" class="btn btn-primary" (click)="reject()">Reject Job</button>
+    </div>
+    <div *ngIf="agency != null && job.status == 'ready'">
+      <!-- get workers -->
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Worker Name</th>
+                <th>Lastname</th>
+                <th>Specialization</th>
+                <th>Occupied</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let worker of workers">
+                <td>{{worker.name}}</td>
+                <td>{{worker.lastName}}</td>
+                <td>{{worker.specialization}}</td>
+                <td>{{isOccupied(worker)}}</td>
+                <td *ngIf="worker.job == -1">
+                  <input type="checkbox" [(ngModel)]="worker.checked">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="assign()">Assign Workers</button>
+    </div>
+    <div *ngIf="agency != null && job.status == 'active'">
+      <button type="button" class="btn btn-primary" (click)="finishRoom()">Finish Room</button>
+      <button type="button" class="btn btn-primary" (click)="saveProgress()">Save Progress</button>
+    </div>
+    <div *ngIf="client != null && job.status == 'active' && roomCheck() == true">
+      <button type="button" class="btn btn-primary" (click)="finishJob()">Finish and Pay</button>
+    </div>
+    <div *ngIf="client != null && job.status == 'finished'">
+      <input type="number" class="form-control" name="rating" id="rating" placeholder="Enter rating" [(ngModel)]="rating">
+      <input type="text" class="form-control" name="comment" id="comment" placeholder="Enter comment" [(ngModel)]="comment">
+      <button type="button" class="btn btn-primary" (click)="rate()">Rate</button>
+    </div> 
+    
+  </div>
+</body>

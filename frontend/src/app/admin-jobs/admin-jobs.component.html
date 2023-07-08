@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin">Requests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/clients">Clients</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/agencies">Agencies</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <select class="form-select me-2" [(ngModel)]="statusSort">
+          <option *ngFor="let s of statuses" [value]="s">{{s}}</option>
+        </select>
+        <button class="btn btn-primary" (click)="sortJobs()">Sort</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped mt-4">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Agency</th>
+                <th scope="col" >Client</th>
+                <th scope="col">Status</th>
+                <th scope="col">Price</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let job of showJobs">
+                <td >{{job.agency}}</td>
+                <td >{{job.client}}</td>
+                <td [class.red]="job.status == 'rejected'" [class.green]="job.status == 'accepted'">{{job.status}}</td>
+                <td *ngIf="job.price != null">{{job.price}}</td>
+                <td *ngIf="job.price == null">no info</td>
+                <td>
+                  <a routerLink="/admin/view-job" class="forgot-password-link" (click)="viewJob(job)">View job</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/client">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/objects">Objects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Agencies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<body>
+  <div class="container">
+
+    <div class="canvas-container">
+      <canvas #myCanvas class="canvas"   height="400px" width = "748px"></canvas>
+    </div>
+    <div class="mb-3">
+      <button type="button" class="btn-primary" (click)="modify()">Modify</button>
+    </div>
+    <div class="mb-3">
+      <button type="button" class="btn-primary" (click)="goBack()">Go back</button>
+    </div>
+  </div>
+</body>

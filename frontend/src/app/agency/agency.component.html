@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/agency">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/worker">Workers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="container">
+        <div class="row">
+          <div class="col">
+            <img [src]="getImage()" alt="Profile picture" width="100" height="100" class="img-thumbnail">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="table-responsive table-responsive-sm">
+              <table class="table mt-4">
+                <tbody>
+                  <tr>
+                    <th scope="row">Username:</th>
+                    <td>{{agency.username}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Name:</th>
+                    <td>{{agency.other.name}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Agency number :</th>
+                    <td>{{agency.other.agencyNumber}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Email:</th>
+                    <td>{{agency.email}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a routerLink="/" class="register-link" (click)="logOut()">Log Out</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="scrollable-container">
+          <div class="container scrollable-container">
+          <div class="table-responsive table-responsive-sm">
+            <form>
+              <div class="mb-3">
+                <label for="password1" class="form-label">Change password</label>
+                <input type="password" class="form-control" id="username" placeholder="Enter new password"
+                  name="password1" [(ngModel)]="newPassword">
+              </div>
+              <div class="mb-3">
+                <label for="password2" class="form-label">Confirm password</label>
+                <input type="password" class="form-control" id="password" placeholder="Confirm your password"
+                  name="password2" [(ngModel)]="confirmPassword">
+              </div>
+              <div class="mb-3">
+                <label for="password3" class="form-label">Old password</label>
+                <input type="password" class="form-control" id="password3" placeholder="Enter old password"
+                  name="password3" [(ngModel)]="oldPassword">
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="changePassword()">Change password</button>
+              <span style="color: coral">{{message}}</span>
+              <hr>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Upload your profile picture</label>
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/jpeg, image/png"
+                  (change)="onImageSelected($event)" enctype="multipart/form-data">
+              </div>
+              <button type="submit" (click)="changeImage()" class="btn btn-primary">Change profile picture</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</body>
+

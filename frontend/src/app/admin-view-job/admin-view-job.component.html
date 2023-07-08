@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin">Requests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/clients">Clients</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/agencies">Agencies</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Agency:</th>
+              <td>{{jobAgency.other.name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Client:</th>
+              <td>{{jobClient.other.name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Object address:</th>
+              <td>{{object.objectAddress}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Job status:</th>
+              <td>{{job.status}}</td>
+            </tr>
+            <tr *ngIf="job.price != null">
+              <th scope="row">Job price:</th>
+              <td>{{job.price}}</td>
+            </tr>
+            <tr *ngIf="job.price == null"> 
+              <th scope="row">Job price:</th>
+              <td>Not set</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h2>Object Layout</h2>
+    <div class="canvas-container">
+      <canvas #myCanvas class="canvas"   height="400px" width = "748px"></canvas>
+    </div>
+    <button class="btn btn-primary" (click)="deleteJob()">Delete Job</button>
+    
+  </div>
+</body>

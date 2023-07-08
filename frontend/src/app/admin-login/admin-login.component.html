@@ -1,0 +1,18 @@
+<body>
+  <title>Login Form</title>
+  <div class="container">
+    <h1>Login</h1>
+    <form>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username" [(ngModel)]="username">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" [(ngModel)]="password">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+    </form>
+    <span style="color:brown">{{message}}</span>
+  </div>
+</body>

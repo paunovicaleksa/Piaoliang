@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Log in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<body>
+  <title>Register Form</title>
+  <div class="container">
+    <h1>Register</h1>
+    <form>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username" [(ngModel)]="username" enctype="multipart/form-data">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" [(ngModel)]="password" enctype="multipart/form-data">
+      </div>
+      <div class="mb-3">
+        <label for="confirm-password" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm-password" placeholder="Enter your password" name="confirm-password" [(ngModel)]="confirmPassword" enctype="multipart/form-data">
+      </div>
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" placeholder="Enter your phone number" name="phoneNumber" [(ngModel)]="phoneNumber" enctype="multipart/form-data">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter your email" name="email" [(ngModel)]="email" enctype="multipart/form-data">
+      </div>
+      <div class="form-group">
+        <label class="form-label">User Type:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="agency" name="userType" [(ngModel)]="type" value="agency" enctype="multipart/form-data">
+          <label class="form-check-label" for="agency">Decorating Agency</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" id="client" name="userType" [(ngModel)]="type" value="client" enctype="multipart/form-data">
+          <label class="form-check-label" for="client">Client</label>
+        </div>
+      </div>
+      
+      <div class="additional-fields" *ngIf="type === 'agency'">
+        <div class="mb-3">
+          <label for="agencyName" class="form-label">Agency Name</label>
+          <input type="text" class="form-control" id="agencyName" name="agencyName" [(ngModel)]="agencyName">
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input type="text" class="form-control" id="address" name="address" [(ngModel)]="address">
+        </div>
+        <div class="mb-3">
+          <label for="agencyNumber" class="form-label">Agency Number</label>
+          <input type="number" class="form-control" id="agencyNumber" name="agencyNumber" [(ngModel)]="agencyNumber">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Agency Description</label>
+          <input type="text" class="form-control" id="description" name="description" [(ngModel)]="description">
+        </div>
+        <div class ="mb-3">
+          <label for="lastName" class="form-label">Upload your profile picture</label>
+          <input type="file" id="imageUpload" name="imageUpload" (change)="onImageSelected($event)" accept="image/jpeg, image/png" enctype="multipart/form-data">
+        </div>
+      </div>
+
+      <div class="additional-fields" *ngIf="type === 'client'">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First name</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="firstName" enctype="multipart/form-data">
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last name</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="lastName" enctype="multipart/form-data">
+        </div>
+        <div class ="mb-3">
+          <label for="lastName" class="form-label">Upload your profile picture</label>
+          <input type="file" id="imageUpload" name="imageUpload" (change)="onImageSelected($event)" accept="image/jpeg, image/png" enctype="multipart/form-data">
+        </div>
+      </div>
+    
+
+    <button class="btn btn-primary" (click)="register()">Register</button>
+    </form>
+    <span style="color:brown">{{message}}</span>
+  </div>
+</body>

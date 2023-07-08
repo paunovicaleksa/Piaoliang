@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/agency">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/worker">Workers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<body>
+  <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive table-responsive-sm">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Vacancies:</th>
+              <td>{{agency.other.vacancies}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Workers:</th>
+              <td>{{workers.length}}</td>
+            </tr>
+            <tr>
+              <li class="col">
+                <a class="forgot-password-link" routerLink="/request-vacancies">Request vacancies</a>
+                <a class="register-link" routerLink="/add-workers" *ngIf="agency.other.vacancies > 0">Add Workers</a>
+              </li>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive table-responsive-sm">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Worker Name</th>
+              <th>Lastname</th>
+              <th>Specialization</th>
+              <th>Occupied</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let worker of workers">
+              <td>{{worker.name}}</td>
+              <td>{{worker.lastName}}</td>
+              <td>{{worker.specialization}}</td>
+              <td>{{isOccupied(worker)}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>

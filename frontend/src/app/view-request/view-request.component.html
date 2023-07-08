@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin">Requests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/clients">Clients</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/agencies">Agencies</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<body> 
+  <div class="container">
+    <div class="row">
+            <div class="col table-responsive table-responsive-sm">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">Request id:</th>
+                    <td>{{request.id}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Request status:</th>
+                    <td>{{request.status}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Request type:</th>
+                    <td>{{request.type}}</td>
+                  </tr>
+                  <tr *ngIf="request.type == 'registration'">
+                    <th scope="row">Username:</th>
+                    <td>                      
+                      {{request.other.username}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="request.type == 'registration'">
+                    <th scope="row">Email:</th>
+                    <td>                      
+                      {{request.other.email}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="request.type == 'cancellation'"> 
+                      <th scope="row">Client:</th>
+                      <td>
+                        {{job.client}}
+                      </td>
+                  </tr>
+                  <tr *ngIf="request.type == 'cancellation'"> 
+                    <th scope="row">Agency:</th>
+                    <td>
+                      {{job.agency}}
+                    </td>
+                   </tr>
+                   <tr *ngIf="request.type == 'cancellation'"> 
+                    <th scope="row">Cancellation reason:</th>
+                    <td>
+                      {{request.other.cancellationReason}}
+                    </td>
+                   </tr> 
+                   <tr *ngIf="request.type == 'cancellation'"> 
+                    <th scope="row">View job:</th>
+                    <td>
+                      <a routerLink="/admin/jobs" class="forgot-password-link">View job</a>
+                    </td>
+                   </tr> 
+                   <tr *ngIf="request.type == 'vacancies'"> 
+                    <th scope="row">Agency:</th>
+                    <td>
+                      {{request.other.agency}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="request.type == 'vacancies'"> 
+                    <th scope="row">Requested vacancies:</th>
+                    <td>
+                      {{request.other.vacancies}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="request.type == 'vacancies'"> 
+                    <th scope="row">Existing vacancies:</th>
+                    <td>
+                      {{agency.other.vacancies}}
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+                <button class="btn btn-primary" (click)="accept(request)">Accept</button>
+                <button class="btn btn-primary" (click)="reject(request)">Reject</button>
+        </div>
+      </div>
+  </div>
+</body>

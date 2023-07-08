@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/agency">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/worker">Workers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<body>
+  <div class="container">
+    <form>
+      <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="Name"  name="Name" [(ngModel)]="name">
+      </div>
+      <div class="mb-3">
+        <label for="lastname" class="form-label">Lastname</label>
+        <input type="text" class="form-control" id="lastname"  name="lastname" [(ngModel)]="lastName">
+      </div>
+      <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="Email"  name="Email" [(ngModel)]="email">
+      </div>
+      <div class="mb-3">
+        <label for="Phone number" class="form-label">Phone number</label>
+        <input type="text" class="form-control" id="Phone number"  name="Phone number" [(ngModel)]="phoneNumber">
+      </div>
+      <div class="mb-3">
+        <label for="Specialization" class="form-label">Specialization</label>
+        <input type="text" class="form-control" id="Specialization"  name="Specialization" [(ngModel)]="specialization">
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="addWorker()">Add worker</button>
+      <span style="color: red">{{message}}</span>
+    </form>
+  </div>
+</body>

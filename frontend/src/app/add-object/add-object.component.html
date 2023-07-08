@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/client">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/objects">Objects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Agencies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Add object</h1>  
+    <div class="mb-3">
+      <label for="objectAddress" class="form-label">Object address</label>
+      <input type="text" class="form-control" id="objectAddress" placeholder="Enter object address"
+        name="objectAddress" [(ngModel)]="objectAddress">
+    </div>
+    <div class="mb-3">
+      <label for="area" class="form-label">Object area</label>
+      <input type="number" class="form-control" id="objectAddress" placeholder="Enter object area"
+        name="area" [(ngModel)]="area">
+    </div>
+    <div class="mb-3">
+      <label for="roomNumber" class="form-label">Room number</label>
+      <input type="number" class="form-control" id="roomNumber" placeholder="Enter room number"
+        name="objectAddress" [(ngModel)]="roomNumber">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Object Type:</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="flat" name="objectType" [(ngModel)]="objectType" value="flat" enctype="multipart/form-data">
+        <label class="form-check-label" for="flat">flat</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="house" name="objectType" [(ngModel)]="objectType" value="house" enctype="multipart/form-data">
+        <label class="form-check-label" for="house">house</label>
+      </div>
+    </div>
+
+    <div class="canvas-container">
+      <canvas #myCanvas class="canvas"   height="400px" width = "748px"></canvas>
+    </div>
+    
+    <div class="mb-3">
+      <label for="width" class="form-label">Width:</label>
+      <input name="width" type="number" id="width" [(ngModel)]="roomWidth" required>
+    </div>
+    <div class="mb-3">
+      <label for="height" class="form-label">Height:</label>
+      <input name="height" type="number" id="height"  [(ngModel)]="roomHeight" required>
+    </div>
+    <div class="mb-3">
+      <button type="button" class="btn-primary" (click)="pickRoom()">Draw room</button>
+    </div>
+    <div class="mb-3">
+      <button type="button" class="btn-primary" (click)="pickDoor()">Draw door</button>
+    </div>
+    <div class="mb-3">
+      <button type="button" class="btn-primary" (click)="reset()">Reset</button>
+    </div>
+    <div class="mb-3">
+      <button type="button" class="btn-primary" (click)="add()">Add</button>
+    </div>
+  </div>
+</body>
+
+
