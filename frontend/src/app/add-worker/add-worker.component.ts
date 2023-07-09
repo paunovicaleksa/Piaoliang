@@ -49,7 +49,7 @@ export class AddWorkerComponent implements OnInit {
             alert("success");
             this.router.navigate(["worker"]);
           } else {
-            alert("error");
+            alert("error, email taken?");
           }
         });
     }

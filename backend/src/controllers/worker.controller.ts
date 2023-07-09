@@ -21,16 +21,22 @@ export class WorkerController{
         });
         id++;
       }
-        WorkerModel.collection.insertOne({'id': id, 'name': name, 'lastName': lastName, 'email': email, 
-        'phoneNumber': phoneNumber, 'specialization': specialization, 'agency': agency, 'job': job}, (err, worker) => {
-          if(err) console.log(err)
-          else {
-            AgencyModel.updateOne({'username': agency}, {$inc: {'other.vacancies': -1}}, (err, agency) => {
-              if(err) console.log(err);
-              else res.json({'msg': 'success'})
-            });
-          }
-        });
+      WorkerModel.find({'email': email}, (err, worker) => {
+        if(err) console.log(err)
+        else if(worker.length > 0) res.json({'msg': 'email'})
+        else {
+          WorkerModel.collection.insertOne({'id': id, 'name': name, 'lastName': lastName, 'email': email, 
+          'phoneNumber': phoneNumber, 'specialization': specialization, 'agency': agency, 'job': job}, (err, worker) => {
+            if(err) console.log(err)
+            else {
+              AgencyModel.updateOne({'username': agency}, {$inc: {'other.vacancies': -1}}, (err, agency) => {
+                if(err) console.log(err);
+                else res.json({'msg': 'success'})
+              });
+            }
+          });
+        }
+      });
     });
   }
 

@@ -51,15 +51,20 @@ export class AdminViewClientComponent implements OnInit {
       this.client.other.profilePicture = 'default.png';
     }
 
-    console.log(this.client.other.profilePicture);
-
-    this.clientService.modifyClient(this.username, this.password, this.name, this.lastName, this.email, this.status,
-      this.client.other.profilePicture).subscribe((m) => {
-        if(m['msg'] == 'success'){
-          alert("Client modified successfully!");
-          this.router.navigate(['/admin/clients']);
-        }
-    });
+    const emailRegex = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+    const passwordRegex = new RegExp(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])(?=.*[a-zA-Z])[a-zA-Z][\w!@#$%^&*()]{6,11}$/);
+    /*  test this */
+    if(!passwordRegex.test(this.password) || !emailRegex.test(this.email)){
+      alert("Invalid email or password!");
+    } else {
+      this.clientService.modifyClient(this.username, this.password, this.name, this.lastName, this.email, this.status,
+        this.client.other.profilePicture).subscribe((m) => {
+          if(m['msg'] == 'success'){
+            alert("Client modified successfully!");
+            this.router.navigate(['/admin/clients']);
+          }
+      });
+    }
   }
 
   remove(){

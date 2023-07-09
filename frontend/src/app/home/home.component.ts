@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.agencyService.getAll().subscribe((agenciesDB: Agency[]) =>{
-      this.agencies = agenciesDB;
+      this.agencies = agenciesDB.filter((agency) => agency.status == "approved");
     });
 
     const loggedType = sessionStorage.getItem("loggedType");

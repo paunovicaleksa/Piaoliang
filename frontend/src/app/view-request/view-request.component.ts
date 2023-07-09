@@ -137,4 +137,8 @@ export class ViewRequestComponent implements OnInit {
     });
   }
 
+  viewJob(job){
+    sessionStorage.setItem("job", job.id.toString());
+    this.router.navigate(['admin/view-job']);
+  }
 }

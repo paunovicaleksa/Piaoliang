@@ -32,7 +32,7 @@ export class JobService {
       price: price
     }
 
-    return this.http.put(`${this.uri}/updateOne`, data);
+    return this.http.post(`${this.uri}/updateOne`, data);
   }
 
   deleteOne(id: number){

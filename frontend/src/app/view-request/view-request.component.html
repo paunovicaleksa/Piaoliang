@@ -74,7 +74,7 @@
                    <tr *ngIf="request.type == 'cancellation'"> 
                     <th scope="row">View job:</th>
                     <td>
-                      <a routerLink="/admin/jobs" class="forgot-password-link">View job</a>
+                      <a routerLink="/admin/view-job" (click)="viewJob(job)" class="forgot-password-link">View job</a>
                     </td>
                    </tr> 
                    <tr *ngIf="request.type == 'vacancies'"> 

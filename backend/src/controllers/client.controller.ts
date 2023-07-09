@@ -20,14 +20,17 @@ const upload = multer({
 const checkImageSize = (req: express.Request, res: express.Response, next) => {
   const {file} = req;
   const sharp = require('sharp');
-
-  sharp(file.path).metadata().then((metadata) => {
-    if(metadata.width >= 100 && metadata.width <= 300 && metadata.height >= 100 && metadata.height <= 300){
-      next();
-    } else{
-      res.json({'msg': 'image must be 300x300 pixels'});
-    }
-  })
+  console.log(file);
+  if(!file) next()
+  else{
+    sharp(file.path).metadata().then((metadata) => {
+      if(metadata.width >= 100 && metadata.width <= 300 && metadata.height >= 100 && metadata.height <= 300){
+        next();
+      } else{
+        res.json({'msg': 'image must be 300x300 pixels'});
+      }
+    })
+  }
 }
 
 const nodemailer = require('nodemailer');

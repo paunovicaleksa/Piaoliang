@@ -71,14 +71,20 @@ export class AdminViewAgencyComponent implements OnInit {
     if(this.removeImage){
       this.agency.other.profilePicture = 'default.png';
     }
-
-    this.agencyService.modifyAgency(this.agency.username, this.password, this.agencyNumber, this.agencyName, this.agencyAddress, 
-      this.email, this.status, this.agency.other.profilePicture, this.vacancies).subscribe((m) => {
-        if(m['msg'] == 'success'){
-          alert("Agency modified successfully!");
-          this.router.navigate(['/admin/agencies']);
-        }
-      });
+    const emailRegex = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+    const passwordRegex = new RegExp(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])(?=.*[a-zA-Z])[a-zA-Z][\w!@#$%^&*()]{6,11}$/);
+    /*  test this */
+    if(!passwordRegex.test(this.password) || !emailRegex.test(this.email) || this.vacancies < 0){
+      alert("Invalid info!");
+    } else {
+      this.agencyService.modifyAgency(this.agency.username, this.password, this.agencyNumber, this.agencyName, this.agencyAddress, 
+        this.email, this.status, this.agency.other.profilePicture, this.vacancies).subscribe((m) => {
+          if(m['msg'] == 'success'){
+            alert("Agency modified successfully!");
+            this.router.navigate(['/admin/agencies']);
+          }
+        });
+    }
   }
 
   getImage(){
