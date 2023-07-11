@@ -1,0 +1,142 @@
+[{
+  "_id": {
+    "$oid": "64aa87a63269c4c253261213"
+  },
+  "id": 1,
+  "type": "registration",
+  "status": "accepted",
+  "other": {
+    "username": "mishimayukio",
+    "email": "mishima@chrysanthemum.com",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa88b43269c4c253261228"
+  },
+  "id": 2,
+  "type": "registration",
+  "status": "accepted",
+  "other": {
+    "username": "faulkner",
+    "email": "faulkner@sound.fury",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa8ab76c982e078108b0a9"
+  },
+  "id": 3,
+  "type": "registration",
+  "status": "accepted",
+  "other": {
+    "username": "aufheben",
+    "email": "pa200202d@student.etf.bg.ac.rs",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa8be09d01357fb36db541"
+  },
+  "id": 4,
+  "type": "registration",
+  "status": "pending",
+  "other": {
+    "username": "immanentcritique",
+    "email": "immanent@critique.com",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa8d569d01357fb36db54e"
+  },
+  "id": 5,
+  "type": "registration",
+  "status": "accepted",
+  "other": {
+    "username": "vukdjordjevic",
+    "email": "vd200543d@student.etf.bg.ac.rs",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa8e0d9d01357fb36db564"
+  },
+  "id": 6,
+  "type": "registration",
+  "status": "accepted",
+  "other": {
+    "username": "spacepainter",
+    "email": "space@painter.com",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa8fdd9d01357fb36db57e"
+  },
+  "id": 7,
+  "type": "registration",
+  "status": "rejected",
+  "other": {
+    "username": "heidegger",
+    "email": "heidgger@being.com",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa92969d01357fb36db5b0"
+  },
+  "id": 8,
+  "type": "registration",
+  "status": "accepted",
+  "other": {
+    "username": "stefantm",
+    "email": "ds200173d@student.etf.bg.ac.rs",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa96839d01357fb36db5d8"
+  },
+  "id": 9,
+  "type": "registration",
+  "status": "pending",
+  "other": {
+    "username": "tonyleung",
+    "email": "tonyleung@chungking.cn",
+    "type": "agency"
+  }
+},{
+  "_id": {
+    "$oid": "64aa9eeb3181bd5838124e86"
+  },
+  "id": 10,
+  "type": "vacancies",
+  "status": "accepted",
+  "other": {
+    "agency": "spacepainter",
+    "vacancies": "5"
+  }
+},{
+  "_id": {
+    "$oid": "64aa9ef13181bd5838124e8c"
+  },
+  "id": 11,
+  "type": "vacancies",
+  "status": "pending",
+  "other": {
+    "agency": "spacepainter",
+    "vacancies": "4"
+  }
+},{
+  "_id": {
+    "$oid": "64aa9f913181bd5838124ef6"
+  },
+  "id": 12,
+  "type": "cancellation",
+  "status": "pending",
+  "other": {
+    "id": 2,
+    "cancellationReason": "Too slow!!"
+  }
+}]
